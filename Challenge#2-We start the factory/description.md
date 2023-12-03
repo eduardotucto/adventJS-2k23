@@ -6,7 +6,7 @@ Gifts are strings of text and materials are characters. Your task is to write a 
 
 A gift can be made if we have all the necessary materials to make it.
 
-´
+```
 const gifts = ['tren', 'oso', 'pelota']
 const materials = 'tronesa'
 
@@ -21,4 +21,4 @@ const gifts = ['libro', 'ps5']
 const materials = 'psli'
 
 manufacture(gifts, materials) // []
-´
+```

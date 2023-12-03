@@ -6,7 +6,7 @@ Gifts are strings of text and materials are characters. Your task is to write a 
 
 A gift can be made if we have all the necessary materials to make it.
 
-```
+```js
 const gifts = ['tren', 'oso', 'pelota']
 const materials = 'tronesa'
 

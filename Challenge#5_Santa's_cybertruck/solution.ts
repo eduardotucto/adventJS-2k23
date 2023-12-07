@@ -6,9 +6,9 @@ function cyberReindeer(road: string, time: number) {
   let sledPosition = newRoad.indexOf('S')
   let current = '.'
 
-  for (let i = 1; i <= time - 1; i++) {
+  for (let i = 1; i < time; i++) {
     if (timeToOpen === i) {
-      newRoad = newRoad.map(el => (el === '|' ? '*' : el))
+      newRoad = newRoad.join('').replaceAll('|', '*').split('')
     }
 
     const nextStep = newRoad[sledPosition + 1]

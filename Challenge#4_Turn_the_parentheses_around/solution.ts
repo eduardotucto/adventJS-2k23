@@ -16,6 +16,27 @@ function decode(message: string) {
 }
 */
 
+/*
+// Points earned: 270
+function decode(message: string) {
+  const vault = []
+  let msg_decoded = ''
+
+  for (const letter of message) {
+    if (letter === '(') {
+      vault.push(msg_decoded)
+      msg_decoded = ''
+    } else if (letter === ')') {
+      const invertedWord = msg_decoded.split('').reverse().join('')
+      msg_decoded = vault.pop() + invertedWord
+    } else {
+      msg_decoded += letter
+    }
+  }
+
+  return msg_decoded
+}
+*/
 
 function decode(message: string) {
 
@@ -29,7 +50,7 @@ function decode(message: string) {
     match = newMessage.match(regex)
   }
 
-  return newMessage.replace(/[()]/g, '')
+  return newMessage
 }
 
 

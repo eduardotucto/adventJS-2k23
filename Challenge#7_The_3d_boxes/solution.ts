@@ -55,10 +55,10 @@ function drawGift(size: number, symbol: string) {
     ) +
     '#\n'
     top.push(spacing + process)
-    bottom.push(process)
+    bottom.unshift(process)
   }
   top.push('#'.repeat(size) + symbol.repeat(size - 2) + '#\n')
-  return top.join('') + bottom.reverse().join('')
+  return [...top, ...bottom].join('')
 }
 
 

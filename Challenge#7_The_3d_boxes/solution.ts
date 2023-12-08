@@ -44,20 +44,15 @@ function drawGift(size: number, symbol: string) {
   if(size < 2) return '#\n'
   let top = []
   let bottom = []
+  const symbolRepeat = symbol.repeat(size - 2)
+  const hashRepeat = '#'.repeat(size - 2)
   for (let i = 0; i < size - 1; i++) {
     const spacing = ' '.repeat(size - 1 - i)
-    const process =
-    '#' +
-    (
-      i === 0 ?
-        '#'.repeat(size - 2) :
-        symbol.repeat(size - 2) + '#' + symbol.repeat(i - 1)
-    ) +
-    '#\n'
+    const process = `#${i ? `${symbolRepeat}#${symbol.repeat(i - 1)}` : hashRepeat}#\n`
     top.push(spacing + process)
     bottom.unshift(process)
   }
-  top.push('#'.repeat(size) + symbol.repeat(size - 2) + '#\n')
+  top.push(`${'#'.repeat(size)}${symbolRepeat}#\n`)
   return [...top, ...bottom].join('')
 }
 

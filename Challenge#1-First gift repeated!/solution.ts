@@ -1,3 +1,6 @@
+
+/*
+// Points earned: 150
 function findFirstRepeated(gifts: number[]): number {
   const giftIndices: { [key: number]: number } = {}
 
@@ -13,6 +16,21 @@ function findFirstRepeated(gifts: number[]): number {
   })
 
   return firstNumberRepeated
+}
+*/
+
+function findFirstRepeated(gifts: number[]): number {
+  const giftIndices: number[] = []
+
+  for (let i = 0; i < gifts.length; i++) {
+    const giftId = gifts[i]
+    if (giftIndices.includes(giftId)) {
+      return giftId
+    } else {
+      giftIndices.push(giftId)
+    }
+  }
+  return -1
 }
 
 const giftIds = [2, 1, 3, 5, 3, 2]

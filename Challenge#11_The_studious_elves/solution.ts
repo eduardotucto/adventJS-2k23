@@ -1,33 +1,43 @@
 function getIndexsForPalindrome(word: string) {
-  if(word === word.split('').reverse().join('')) return []
+  if (word === word.split('').reverse().join('')) return []
 
-  let wordCopy = word
+  let modifiedWord = word
 
-  for (let i = 0; i < wordCopy.length; i++) {
+  for (let i = 0; i < modifiedWord.length; i++) {
+    const currentChar = modifiedWord[i]
+    const antipodalChar = modifiedWord[modifiedWord.length - 1 - i]
 
-    const currentLetter = wordCopy[i]
-    const antipodalLetter = wordCopy[wordCopy.length - 1 - i]
+    if (currentChar === antipodalChar) continue
 
-    console.log(currentLetter, antipodalLetter)
+    const splitModifiedWord = modifiedWord.split('')
+    const antipodalIndex = splitModifiedWord.indexOf(antipodalChar, 1)
 
-    if (currentLetter === antipodalLetter) continue
+    splitModifiedWord[i] = antipodalChar
+    splitModifiedWord[antipodalIndex] = currentChar
 
-    const splitWordCopy = wordCopy.split('')
-    const indiceLetra2 = splitWordCopy.indexOf(antipodalLetter, 1)
-
-    console.log(currentLetter, i, antipodalLetter, indiceLetra2)
-
-    splitWordCopy[i] = antipodalLetter
-    splitWordCopy[indiceLetra2] = currentLetter
-
-    wordCopy = splitWordCopy.join('')
-    if(wordCopy === wordCopy.split('').reverse().join('')) {
-      return [Math.min(i, indiceLetra2), Math.max(i, indiceLetra2)]
+    modifiedWord = splitModifiedWord.join('')
+    if (modifiedWord === modifiedWord.split('').reverse().join('')) {
+      return [Math.min(i, antipodalIndex), Math.max(i, antipodalIndex)]
     }
-    wordCopy = word
+
+    modifiedWord = word
   }
+
   return null
 }
 
-const abc = getIndexsForPalindrome('rotaratov')
-console.log(abc) // [4, 8]
+console.log(
+  getIndexsForPalindrome('anna'), // []
+  '\n',
+  getIndexsForPalindrome('abab'), // [0, 1]
+  '\n',
+  getIndexsForPalindrome('abac'), // null
+  '\n',
+  getIndexsForPalindrome('aaaaaaaa'), // []
+  '\n',
+  getIndexsForPalindrome('aaababa'), // [1, 3]
+  '\n',
+  getIndexsForPalindrome('caababa'), // null
+  '\n',
+  getIndexsForPalindrome('rotaratov') // [4, 8]
+)
